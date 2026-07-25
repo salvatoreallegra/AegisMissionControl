@@ -15,8 +15,5 @@ Spacecraft voyager = new Spacecraft
     BatteryVoltage = 22.1,
     AntennaOnline = false
 };
-Console.WriteLine("AEGIS MISSION CONTROL");
-Console.WriteLine("Spacecraft: " + odyssey.Name);
-Console.WriteLine("Temperature: " + odyssey.Temperature);
-Console.WriteLine("Battery Voltage: " + odyssey.BatteryVoltage);
-Console.WriteLine("Antenna Online: " + odyssey.AntennaOnline);
+odyssey.PrintStatus();
+voyager.PrintStatus();

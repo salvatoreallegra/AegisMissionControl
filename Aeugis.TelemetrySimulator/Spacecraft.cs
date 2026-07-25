@@ -13,5 +13,14 @@ namespace Aeugis.TelemetrySimulator
         public double BatteryVoltage { get; set; }
 
         public bool AntennaOnline { get; set; }
+
+
+        public void PrintStatus()
+        {
+            Console.WriteLine("Spacecraft: " + Name);
+            Console.WriteLine("Temperature: " + Temperature);
+            Console.WriteLine("Battery Voltage: " + BatteryVoltage);
+            Console.WriteLine("Antenna Online: " + AntennaOnline);
+        }
     }
 }
