@@ -14,7 +14,14 @@ namespace Aeugis.TelemetrySimulator
 
         public bool AntennaOnline { get; set; }
 
-
+        public bool HasLowBattery()
+        {
+            return BatteryVoltage < 20.0;
+        }
+        public bool IsOverheating(double limit)
+        {
+            return Temperature > limit;
+        }
         public void PrintStatus()
         {
             Console.WriteLine("Spacecraft: " + Name);

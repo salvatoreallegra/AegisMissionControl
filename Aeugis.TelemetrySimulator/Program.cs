@@ -17,3 +17,7 @@ Spacecraft voyager = new Spacecraft
 };
 odyssey.PrintStatus();
 voyager.PrintStatus();
+Console.WriteLine(odyssey.HasLowBattery());
+Console.WriteLine(voyager.HasLowBattery());
+Console.WriteLine(odyssey.IsOverheating(24));
+Console.WriteLine(voyager.IsOverheating(88));
