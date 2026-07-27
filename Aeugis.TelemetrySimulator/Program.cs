@@ -1,23 +1,53 @@
 ﻿using Aeugis.TelemetrySimulator;
 
-Spacecraft odyssey = new Spacecraft
-{
-    Name = "Odyssey-1",
-    Temperature = 82.4,
-    BatteryVoltage = 21.7,
-    AntennaOnline = true
-};
+List<Spacecraft> fleet =
+[
+    new Spacecraft("Odyssey-1")
+    {
+        Temperature = 84.2,
+        BatteryVoltage = 21.7,
+        AntennaOnline = true
+    },
 
-Spacecraft voyager = new Spacecraft
+    new Spacecraft("Voyager-7")
+    {
+        Temperature = 62.8,
+        BatteryVoltage = 18.4,
+        AntennaOnline = true
+    },
+
+    new Spacecraft("Europa-Probe")
+    {
+        Temperature = 91.3,
+        BatteryVoltage = 14.2,
+        AntennaOnline = false
+    }
+];
+
+foreach (Spacecraft spacecraft in fleet)
 {
-    Name = "Voyager-7",
-    Temperature = 76.8,
-    BatteryVoltage = 22.1,
-    AntennaOnline = false
-};
-odyssey.PrintStatus();
-voyager.PrintStatus();
-Console.WriteLine(odyssey.HasLowBattery());
-Console.WriteLine(voyager.HasLowBattery());
-Console.WriteLine(odyssey.IsOverheating(24));
-Console.WriteLine(voyager.IsOverheating(88));
+    spacecraft.PrintStatus();
+
+    if (spacecraft.IsOverheating(80))
+    {
+        Console.WriteLine("ALERT: Critical temperature.");
+    }
+
+    if (!spacecraft.AntennaOnline)
+    {
+        Console.WriteLine("ALERT: Antenna offline.");
+    }
+
+    Console.WriteLine();
+}
+
+List<Spacecraft> overHeatingSpacecraft =
+    fleet.Where(spacecraft => spacecraft.IsOverheating(80))
+    .ToList();
+
+Console.WriteLine("Overheating Spacecraft:");
+foreach (Spacecraft spacecraft in overHeatingSpacecraft)
+{
+    Console.WriteLine($"{spacecraft.Name}: {spacecraft.Temperature}");
+}
+
